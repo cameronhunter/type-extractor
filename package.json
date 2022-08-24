@@ -1,0 +1,8 @@
+{
+  "name": "@cameronhunter/DefinitelyTypedCreator",
+  "version": "0.0.0",
+  "description": "Extract types that are embedded in a package to a separate types package",
+  "main": "index.js",
+  "author": "Cameron Hunter <hello@cameronhunter.co.uk>",
+  "license": "MIT"
+}
