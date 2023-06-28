@@ -1,8 +1,24 @@
 {
-  "name": "@cameronhunter/DefinitelyTypedCreator",
+  "name": "@cameronhunter/type-extractor",
   "version": "0.0.0",
   "description": "Extract types that are embedded in a package to a separate types package",
   "main": "index.js",
   "author": "Cameron Hunter <hello@cameronhunter.co.uk>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf build",
+    "start": "yarn build && node ./build/bin/index.js"
+  },
+  "dependencies": {
+    "playwright-core": "^1.35.1"
+  },
+  "devDependencies": {
+    "@tsconfig/node-lts": "^18.12.3",
+    "@tsconfig/strictest": "^2.0.1",
+    "@types/node": "~18",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.5"
+  },
+  "packageManager": "yarn@3.6.0"
 }
