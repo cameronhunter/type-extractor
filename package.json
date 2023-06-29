@@ -9,7 +9,8 @@
     "build": "tsc -p ./tsconfig.build.json && chmod +x ./build/bin/index.js",
     "clean": "rm -rf build",
     "start": "yarn build && node ./build/bin/index.js",
-    "test": "vitest"
+    "test": "vitest",
+    "release": "yarn build && yarn npm publish"
   },
   "files": [
     "build"
