@@ -3,5 +3,8 @@
     "tabWidth": 4,
     "singleQuote": true,
     "trailingComma": "es5",
-    "overrides": [{ "files": "*.json", "options": { "tabWidth": 2 } }]
+    "overrides": [
+        { "files": "*.json", "options": { "tabWidth": 2 } },
+        { "files": "*.md", "options": { "printWidth": 80 } }
+    ]
 }
