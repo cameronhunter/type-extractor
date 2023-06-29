@@ -9,7 +9,7 @@
     "build": "tsc -p ./tsconfig.build.json",
     "clean": "rm -rf build",
     "start": "yarn build && node ./build/bin/index.js",
-    "test": "vitest tests"
+    "test": "vitest"
   },
   "dependencies": {
     "dedent": "^0.7.0",
