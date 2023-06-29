@@ -10,7 +10,7 @@ test('Throws an error when using @types packages', async () => {
 test('it creates a @types package', async () => {
     const pkg = await createTypesPackageFrom('puppeteer-core', '20.7.4');
 
-    const packageJSON = require(`${pkg}/package.json`);
+    const packageJSON = require(`${pkg.directory}/package.json`);
 
     expect(packageJSON).toMatchSnapshot();
 });
