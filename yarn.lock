@@ -151,7 +151,6 @@ __metadata:
     "@tsconfig/node-lts": ^18.12.3
     "@tsconfig/strictest": ^2.0.1
     "@types/dedent": ^0.7.0
-    "@types/is-ci": ^3.0.0
     "@types/node": ~18
     "@types/tar": ^6.1.5
     dedent: ^0.7.0
@@ -440,15 +439,6 @@ __metadata:
   version: 0.7.0
   resolution: "@types/dedent@npm:0.7.0"
   checksum: b9b7f0c42d99da764be75dd00b2f2be162f5a0ca43aafe0c740efa76b5f37f8a4f4e2ccc84883054e06e05c1169733aa8ee7750da0334c9cba26d9e10ae844f1
-  languageName: node
-  linkType: hard
-
-"@types/is-ci@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "@types/is-ci@npm:3.0.0"
-  dependencies:
-    ci-info: ^3.1.0
-  checksum: 7c1f1f16c1fa2134de7400d82766c83fa76057261ba890628af77a09382ebb92d945bb077b98cfcf3d40ab1469c9ffbd2278112867edbe57aa655f53547eb139
   languageName: node
   linkType: hard
 
@@ -932,13 +922,6 @@ __metadata:
   version: 2.0.0
   resolution: "chownr@npm:2.0.0"
   checksum: c57cf9dd0791e2f18a5ee9c1a299ae6e801ff58fee96dc8bfd0dcb4738a6ce58dd252a3605b1c93c6418fe4f9d5093b28ffbf4d66648cb2a9c67eaef9679be2f
-  languageName: node
-  linkType: hard
-
-"ci-info@npm:^3.1.0":
-  version: 3.8.0
-  resolution: "ci-info@npm:3.8.0"
-  checksum: d0a4d3160497cae54294974a7246202244fff031b0a6ea20dd57b10ec510aa17399c41a1b0982142c105f3255aff2173e5c0dd7302ee1b2f28ba3debda375098
   languageName: node
   linkType: hard
 
