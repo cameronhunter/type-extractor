@@ -2,21 +2,29 @@
 
 exports[`it creates a @types package 1`] = `
 {
-  "author": {
-    "name": "Microsoft Corporation",
+  "author": "The Chromium Authors",
+  "dependencies": {
+    "@puppeteer/browsers": "1.4.3",
+    "chromium-bidi": "0.4.16",
+    "devtools-protocol": "0.0.1135028",
+    "ws": "8.13.0",
   },
-  "description": "A high-level API to automate web browsers",
+  "description": "A high-level API to control headless Chrome over the DevTools Protocol",
   "exports": {
     ".": {
-      "types": "./index.d.ts",
+      "types": "./lib/types.d.ts",
     },
-    "./types/protocol": "./types/protocol.d.ts",
-    "./types/structs": "./types/structs.d.ts",
   },
-  "homepage": "https://playwright.dev",
+  "keywords": [
+    "puppeteer",
+    "chrome",
+    "headless",
+    "automation",
+  ],
   "license": "Apache-2.0",
-  "name": "@types/playwright-core",
-  "types": "types/types.d.ts",
-  "version": "1.35.1",
+  "name": "@types/puppeteer-core",
+  "type": "commonjs",
+  "types": "./lib/types.d.ts",
+  "version": "20.7.4",
 }
 `;

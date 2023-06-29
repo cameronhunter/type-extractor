@@ -16,6 +16,7 @@
   ],
   "dependencies": {
     "dedent": "^0.7.0",
+    "depcheck": "^1.4.3",
     "minimatch": "^9.0.2",
     "tar": "^6.1.15",
     "undici": "^5.22.1"

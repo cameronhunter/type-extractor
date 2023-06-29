@@ -9,7 +9,7 @@ test('Throws an error when using @types packages', async () => {
 });
 
 test.skipIf(isCI)('it creates a @types package', async () => {
-    const pkg = await createTypesPackageFrom('playwright-core', '1.35.1');
+    const pkg = await createTypesPackageFrom('puppeteer-core', '20.7.4');
 
     const packageJSON = require(`${pkg}/package.json`);
 

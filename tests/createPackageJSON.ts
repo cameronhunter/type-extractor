@@ -1,29 +1,15 @@
 import { describe, test, expect } from 'vitest';
-import { createTypesPackageJSON, rewriteExports } from '../src/lib/createPackageJSON';
+import { rewriteExports, rewriteName } from '../src/lib/createPackageJSON';
 
-describe('createTypesPackageJSON', () => {
-    test('rewrites package.json for the new @types package', () => {
-        const pkg = {
-            name: 'playwright-core',
-            version: '1.2.3',
-        };
+describe('rewriteName', () => {
+    const suite = test.each`
+        description            | name                  | expectation
+        ${'Top-level package'} | ${'playwright-core'}  | ${'@types/playwright-core'}
+        ${'Scoped package'}    | ${'@playwright/core'} | ${'@types/playwright__core'}
+    `;
 
-        expect(createTypesPackageJSON(pkg)).toEqual({
-            name: '@types/playwright-core',
-            version: '1.2.3',
-        });
-    });
-
-    test('handling scoped packages', () => {
-        const pkg = {
-            name: '@playwright/core',
-            version: '2.3.4',
-        };
-
-        expect(createTypesPackageJSON(pkg)).toEqual({
-            name: '@types/playwright__core',
-            version: '2.3.4',
-        });
+    suite('$description', ({ name, expectation }) => {
+        expect(rewriteName(name)).toBe(expectation);
     });
 });
 

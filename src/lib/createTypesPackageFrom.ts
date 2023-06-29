@@ -18,14 +18,17 @@ export async function createTypesPackageFrom(packageName: string, version?: stri
 
     const packageJSONPath = path.join(packageDirectory, 'package.json');
     const packageJSON = require(packageJSONPath);
-    const newPackageName = getPackageDirectoryName(packageName);
 
     ok(
         existsSync(path.resolve(packageDirectory, packageJSON.types || 'index.d.ts')),
-        `Expected type definitions to exist in the package.`
+        `Expected type definitions to exist in ${packageName}@${packageJSON.version}.`
     );
 
-    await writeFile(packageJSONPath, JSON.stringify(createTypesPackageJSON(packageJSON), null, 2), 'utf-8');
+    const newPackageName = getPackageDirectoryName(packageName);
+    const newPackageJSON = await createTypesPackageJSON(packageDirectory, packageJSON);
+
+    await writeFile(packageJSONPath, JSON.stringify(newPackageJSON, null, 2), 'utf-8');
+
     await writeFile(
         path.join(packageDirectory, 'README.md'),
         `# ${newPackageName}\n\nTypescript type definitions extracted from \`${packageName}@${packageJSON.version}\`.\n`,
