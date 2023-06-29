@@ -2,9 +2,7 @@
   "name": "@cameronhunter/type-extractor",
   "version": "0.0.0",
   "description": "Extract types that are embedded in a package to a separate @types package",
-  "bin": {
-    "type-extractor": "./build/bin/index.js"
-  },
+  "bin": "./build/bin/index.js",
   "author": "Cameron Hunter <hello@cameronhunter.co.uk>",
   "license": "MIT",
   "scripts": {
@@ -26,13 +24,18 @@
     "@tsconfig/node-lts": "^18.12.3",
     "@tsconfig/strictest": "^2.0.1",
     "@types/dedent": "^0.7.0",
+    "@types/is-ci": "^3.0.0",
     "@types/node": "~18",
     "@types/tar": "^6.1.5",
+    "is-ci": "^3.0.1",
     "typescript": "^5.1.5",
     "vitest": "^0.32.2"
   },
   "packageManager": "yarn@3.6.0",
   "publishConfig": {
     "access": "public"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }
