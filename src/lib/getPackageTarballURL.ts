@@ -1,6 +1,6 @@
-import { ok } from 'assert';
+import { ok } from 'node:assert';
 import { fetch } from 'undici';
-import { URL } from 'url';
+import { URL } from 'node:url';
 
 export interface PackageDetails {
     'dist-tags': { [tag: string]: string };

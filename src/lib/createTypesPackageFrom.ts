@@ -1,13 +1,13 @@
-import { doesNotMatch, ok } from 'assert';
-import { mkdtemp, rename, writeFile } from 'fs/promises';
-import * as path from 'path';
+import { doesNotMatch, ok } from 'node:assert';
+import { mkdtemp, rename, writeFile } from 'node:fs/promises';
+import * as path from 'node:path';
 import { getPackageDirectoryName } from './getPackageDirectoryName';
 import { getPackageTarballURL } from './getPackageTarballURL';
 import { downloadTarball } from './downloadTarball';
 import { extractTarball } from './extractTarball';
-import { tmpdir } from 'os';
+import { tmpdir } from 'node:os';
 import { createTypesPackageJSON } from './createPackageJSON';
-import { existsSync } from 'fs';
+import { existsSync } from 'node:fs';
 
 export async function createTypesPackageFrom(packageName: string, version?: string): Promise<string> {
     doesNotMatch(packageName, /^@types\/.+/, `There's no need to extract types from a DefinitelyTyped package.`);

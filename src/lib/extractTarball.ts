@@ -1,11 +1,11 @@
-import { mkdtemp } from 'fs/promises';
-import * as path from 'path';
-import { tmpdir } from 'os';
+import { mkdtemp } from 'node:fs/promises';
+import * as path from 'node:path';
+import { tmpdir } from 'node:os';
 import { extract } from 'tar';
 import { minimatch } from 'minimatch';
 
 export async function extractTarball(file: string, filter: string[] = []): Promise<string> {
-    const tmpDirectory = await mkdtemp(path.join(tmpdir(), 'type-extractor-package'));
+    const tmpDirectory = await mkdtemp(tmpdir());
 
     // Files in the tarball all in a top-level `package` directory that we don't want.
     const strip = 1;
