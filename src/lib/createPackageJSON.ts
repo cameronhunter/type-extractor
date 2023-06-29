@@ -1,5 +1,5 @@
 import { getPackageDirectoryName } from './getPackageDirectoryName';
-import depcheck, { PackageDependencies } from 'depcheck';
+import depcheck, { type PackageDependencies } from 'depcheck';
 
 export interface PackageJSON {
     name: string;

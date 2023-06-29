@@ -1,11 +1,10 @@
 import { ok } from 'node:assert';
 import { createWriteStream } from 'node:fs';
-import { mkdtemp } from 'node:fs/promises';
-import { tmpdir } from 'node:os';
-import * as path from 'node:path';
+import { join, basename } from 'node:path';
 import { pipeline } from 'node:stream/promises';
 import { fetch } from 'undici';
 import type { URL } from 'node:url';
+import { createTmpDirectory } from './createTmpDirectory';
 
 /**
  * Find and download a tarball from the registry.
@@ -13,8 +12,8 @@ import type { URL } from 'node:url';
  * @returns the path to the downloaded tarball.
  */
 export async function downloadTarball(url: URL): Promise<string> {
-    const tmpDirectory = await mkdtemp(path.join(tmpdir(), 'type-extractor-'));
-    const destinationFilepath = path.join(tmpDirectory, path.basename(url.pathname));
+    const tmpDirectory = await createTmpDirectory();
+    const destinationFilepath = join(tmpDirectory, basename(url.pathname));
 
     const response = await fetch(url);
 

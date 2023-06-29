@@ -1,13 +1,13 @@
 import { doesNotMatch, ok } from 'node:assert';
-import { mkdtemp, rename, writeFile } from 'node:fs/promises';
-import * as path from 'node:path';
+import { rename, writeFile } from 'node:fs/promises';
+import { join, resolve } from 'node:path';
 import { getPackageDirectoryName } from './getPackageDirectoryName';
 import { getPackageTarballURL } from './getPackageTarballURL';
 import { downloadTarball } from './downloadTarball';
 import { extractTarball } from './extractTarball';
-import { tmpdir } from 'node:os';
 import { createTypesPackageJSON } from './createPackageJSON';
 import { existsSync } from 'node:fs';
+import { createTmpDirectory } from './createTmpDirectory';
 
 export async function createTypesPackageFrom(packageName: string, version?: string): Promise<string> {
     doesNotMatch(packageName, /^@types\/.+/, `There's no need to extract types from a DefinitelyTyped package.`);
@@ -16,11 +16,11 @@ export async function createTypesPackageFrom(packageName: string, version?: stri
     const tarball = await downloadTarball(url);
     const packageDirectory = await extractTarball(tarball, ['package.json', '**/*.d.ts', 'LICENSE*']);
 
-    const packageJSONPath = path.join(packageDirectory, 'package.json');
+    const packageJSONPath = join(packageDirectory, 'package.json');
     const packageJSON = require(packageJSONPath);
 
     ok(
-        existsSync(path.resolve(packageDirectory, packageJSON.types || 'index.d.ts')),
+        existsSync(resolve(packageDirectory, packageJSON.types || 'index.d.ts')),
         `Expected type definitions to exist in ${packageName}@${packageJSON.version}.`
     );
 
@@ -30,12 +30,12 @@ export async function createTypesPackageFrom(packageName: string, version?: stri
     await writeFile(packageJSONPath, JSON.stringify(newPackageJSON, null, 2), 'utf-8');
 
     await writeFile(
-        path.join(packageDirectory, 'README.md'),
+        join(packageDirectory, 'README.md'),
         `# ${newPackageName}\n\nTypescript type definitions extracted from \`${packageName}@${packageJSON.version}\`.\n`,
         'utf-8'
     );
 
-    const destinationDirectory = path.join(await mkdtemp(tmpdir()), newPackageName);
+    const destinationDirectory = join(await createTmpDirectory(), newPackageName);
 
     await rename(packageDirectory, destinationDirectory);
 

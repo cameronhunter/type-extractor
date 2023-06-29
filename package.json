@@ -25,7 +25,6 @@
     "@tsconfig/node-lts": "^18.12.3",
     "@tsconfig/strictest": "^2.0.1",
     "@types/dedent": "^0.7.0",
-    "@types/is-ci": "^3.0.0",
     "@types/node": "~18",
     "@types/tar": "^6.1.5",
     "typescript": "^5.1.5",
