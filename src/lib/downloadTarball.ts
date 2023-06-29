@@ -13,7 +13,7 @@ import type { URL } from 'node:url';
  * @returns the path to the downloaded tarball.
  */
 export async function downloadTarball(url: URL): Promise<string> {
-    const tmpDirectory = await mkdtemp(tmpdir());
+    const tmpDirectory = await mkdtemp(path.join(tmpdir(), 'type-extractor-'));
     const destinationFilepath = path.join(tmpDirectory, path.basename(url.pathname));
 
     const response = await fetch(url);

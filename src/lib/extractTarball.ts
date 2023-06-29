@@ -5,7 +5,7 @@ import { extract } from 'tar';
 import { minimatch } from 'minimatch';
 
 export async function extractTarball(file: string, filter: string[] = []): Promise<string> {
-    const tmpDirectory = await mkdtemp(tmpdir());
+    const tmpDirectory = await mkdtemp(path.join(tmpdir(), 'type-extractor-'));
 
     // Files in the tarball all in a top-level `package` directory that we don't want.
     const strip = 1;
