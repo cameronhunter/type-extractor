@@ -1,16 +1,21 @@
 {
   "name": "@cameronhunter/type-extractor",
   "version": "0.0.0",
-  "description": "Extract types that are embedded in a package to a separate types package",
-  "main": "index.js",
+  "description": "Extract types that are embedded in a package to a separate @types package",
+  "bin": {
+    "type-extractor": "./build/bin/index.js"
+  },
   "author": "Cameron Hunter <hello@cameronhunter.co.uk>",
   "license": "MIT",
   "scripts": {
-    "build": "tsc -p ./tsconfig.build.json",
+    "build": "tsc -p ./tsconfig.build.json && chmod +x ./build/bin/index.js",
     "clean": "rm -rf build",
     "start": "yarn build && node ./build/bin/index.js",
     "test": "vitest"
   },
+  "files": [
+    "build"
+  ],
   "dependencies": {
     "dedent": "^0.7.0",
     "minimatch": "^9.0.2",
