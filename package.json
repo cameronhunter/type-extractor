@@ -10,7 +10,8 @@
     "clean": "rm -rf build",
     "start": "yarn build && node ./build/bin/index.js",
     "test": "vitest",
-    "release": "yarn build && yarn npm publish"
+    "preversion": "yarn build",
+    "release": "yarn version && yarn npm publish"
   },
   "files": [
     "build"

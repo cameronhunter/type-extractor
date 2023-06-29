@@ -1,7 +1,7 @@
 # `@cameronhunter/type-extractor`
 
-[![CI](https://github.com/cameronhunter/type-extractor/actions/workflows/CI.yml/badge.svg)](https://github.com/cameronhunter/type-extractor/actions/workflows/CI.yml)
-![npm (scoped)](https://img.shields.io/npm/v/cameronhunter/type-extractor)
+[![npm package](https://img.shields.io/npm/v/%40cameronhunter/type-extractor)](https://www.npmjs.com/package/@cameronhunter/type-extractor)
+[![CI Status](https://github.com/cameronhunter/type-extractor/actions/workflows/CI.yml/badge.svg)](https://github.com/cameronhunter/type-extractor/actions/workflows/CI.yml)
 
 Extract TypeScript type definitions from npm packages.
 
