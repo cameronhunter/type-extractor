@@ -9,7 +9,10 @@ import { createTypesPackageJSON } from './createPackageJSON';
 import { existsSync } from 'node:fs';
 import { createTmpDirectory } from './createTmpDirectory';
 
-export async function createTypesPackageFrom(packageName: string, version?: string): Promise<string> {
+export async function createTypesPackageFrom(
+    packageName: string,
+    version?: string
+): Promise<{ name: string; version: string; directory: string }> {
     doesNotMatch(packageName, /^@types\/.+/, `There's no need to extract types from a DefinitelyTyped package.`);
 
     const url = await getPackageTarballURL(packageName, version);
@@ -39,5 +42,9 @@ export async function createTypesPackageFrom(packageName: string, version?: stri
 
     await rename(packageDirectory, destinationDirectory);
 
-    return destinationDirectory;
+    return {
+        name: newPackageJSON.name,
+        version: newPackageJSON.version,
+        directory: destinationDirectory,
+    };
 }

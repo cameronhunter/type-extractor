@@ -8,11 +8,17 @@ import { rename } from 'node:fs/promises';
 import path from 'node:path';
 
 async function main(packageName: string, options: { version?: string | undefined; directory?: string | undefined }) {
-    const packageDirectory = await createTypesPackageFrom(packageName, options.version);
+    const result = await createTypesPackageFrom(packageName, options.version);
+
+    const destination = options.directory
+        ? path.join(options.directory, path.basename(result.directory))
+        : result.directory;
 
     if (options.directory) {
-        await rename(packageDirectory, path.join(options.directory, path.basename(packageDirectory)));
+        await rename(result.directory, destination);
     }
+
+    console.log(`Created ${result.name}@${result.version} in ${destination}.`);
 }
 
 const config = {

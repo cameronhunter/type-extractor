@@ -3,6 +3,7 @@ import depcheck, { type PackageDependencies } from 'depcheck';
 
 export interface PackageJSON {
     name: string;
+    version: string;
     exports?: { [path: string]: string | { types?: string } } | undefined;
     dependencies?: PackageDependencies | undefined;
     [other: string]: unknown;
