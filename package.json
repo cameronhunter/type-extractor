@@ -1,6 +1,6 @@
 {
   "name": "@cameronhunter/type-extractor",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Extract types that are embedded in a package to a separate @types package",
   "bin": "./build/bin/index.js",
   "author": "Cameron Hunter <hello@cameronhunter.co.uk>",
