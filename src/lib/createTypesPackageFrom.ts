@@ -8,6 +8,7 @@ import { extractTarball } from './extractTarball';
 import { createTypesPackageJSON } from './createPackageJSON';
 import { existsSync } from 'node:fs';
 import { createTmpDirectory } from './createTmpDirectory';
+import dedent from 'dedent';
 
 export async function createTypesPackageFrom(
     packageName: string,
@@ -34,7 +35,16 @@ export async function createTypesPackageFrom(
 
     await writeFile(
         join(packageDirectory, 'README.md'),
-        `# ${newPackageName}\n\nTypescript type definitions extracted from \`${packageName}@${packageJSON.version}\`.\n`,
+        dedent`
+            # \`${newPackageJSON.name}\`
+
+            Typescript type definitions extracted from [\`${packageName}@${packageJSON.version}\`](https://www.npmjs.com/package/${packageName})
+            by [\`type-extractor\`](https://www.npmjs.com/package/@cameronhunter/type-extractor).
+
+            \`\`\`sh
+            $ npx @cameronhunter/type-extractor ${packageName}@${packageJSON.version}
+            \`\`\`\n
+            `,
         'utf-8'
     );
 

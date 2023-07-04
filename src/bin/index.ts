@@ -7,8 +7,12 @@ import dedent from 'dedent';
 import { rename } from 'node:fs/promises';
 import path from 'node:path';
 
-async function main(packageName: string, options: { version?: string | undefined; directory?: string | undefined }) {
-    const result = await createTypesPackageFrom(packageName, options.version);
+async function main(pkg: string, options: { directory?: string | undefined }) {
+    const [packageName, version = 'latest'] = pkg.split('@');
+
+    ok(packageName, 'Expected a package name to be provided.');
+
+    const result = await createTypesPackageFrom(packageName, version);
 
     const destination = options.directory
         ? path.join(options.directory, path.basename(result.directory))
@@ -25,10 +29,6 @@ const config = {
     allowPositionals: true,
     strict: true,
     options: {
-        version: {
-            type: 'string',
-            default: 'latest',
-        },
         directory: {
             type: 'string',
             default: process.cwd(),
@@ -44,16 +44,15 @@ const { positionals, values } = parseArgs(config);
 
 if (values['help']) {
     console.log(dedent`
-        Usage: type-extractor <package-name> [options]
+        Usage: type-extractor <package-name>[@version] [options]
 
         Options:
-            --version       Package version (default: ${config.options.version.default})
             --directory     Directory to save the package (default: ${config.options.directory.default})
             --help, -h      Show this message
 
         Examples:
-            type-extractor playwright-core                   Extract the types for the latest version of playwright-core.
-            type-extractor playwright-core --version 1.3.6   Extract the types for v1.3.6 of playwright-core.
+            type-extractor playwright-core          Extract the types for the latest version of playwright-core.
+            type-extractor playwright-core@1.3.6    Extract the types for v1.3.6 of playwright-core.
     `);
 
     process.exit(0);
